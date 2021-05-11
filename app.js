@@ -5,11 +5,15 @@ const instance = axios.create({
     baseURL: 'https://cdn-api.co-vin.in',
     headers: { "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36" }
 });
+
 let counter = 0
 let found = false
 
-const doShit = (instance) => {
-    instance.get('/api/v2/appointment/sessions/public/calendarByPin?pincode=590001&date=11-05-2021')
+const pincode = '590001'
+const date = '11-05-2021'
+const main = (instance) => {
+    // API can be changed to hit via district code as well. Refer README
+    instance.get(`/api/v2/appointment/sessions/public/calendarByPin?pincode=${pincode}&date=${date}`)
         .then(response => {
             found = false
             counter++;
@@ -31,4 +35,4 @@ const doShit = (instance) => {
 }
 
 console.log('App Initializing...')
-setInterval(doShit, 60000, instance)
+setInterval(main, 60000, instance)

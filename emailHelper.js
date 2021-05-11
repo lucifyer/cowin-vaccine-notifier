@@ -1,7 +1,7 @@
 "use strict";
 const nodemailer = require("nodemailer");
 
-//Use any email credentials with Gmail or Yandex
+//Use proper credentials, refer to documentation if you want to use other emailing service
 async function sendEmail(to, body) {
     let transporter = nodemailer.createTransport({
         service: 'Gmail',
